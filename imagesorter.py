@@ -2,12 +2,11 @@
 
 from PIL import Image
 from optparse import OptionParser
-import glob, os, re, shutil
+import os, re, shutil
 
 parser = OptionParser("Usage: %prog source-directory [options]")
 filepattern = re.compile("([^\s]+(\.(jpeg|jpg|png|gif|bmp))$)")
 
-#parser.add_option("-d", "--directory", dest="directory", help="Directory containing image files")
 parser.add_option("-l", "--landscape", dest="landscape_dir", help="Directory to add landscape photos to")
 parser.add_option("-p", "--portrait", dest="portrait_dir", help="Directory to add portrait photos to")
 parser.add_option("-s", "--square", dest="square_dir", help="Directory to add square photos to")
