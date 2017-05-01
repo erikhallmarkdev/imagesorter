@@ -1,6 +1,6 @@
 # imagesorter
 
-This simple script allows you to copy landscape, portrait, and square photos found in a directory into separate direcories.
+This simple script allows you to copy landscape, portrait, and square photos in a directory into separate direcories.
 
 ```
 Usage: imagesorter.py source-directory [options]
