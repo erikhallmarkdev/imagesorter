@@ -4,7 +4,7 @@ This simple script allows you to copy landscape, portrait, and square photos in 
 
 This script requires PIL(Python Image processing Library), which can be a bit tough to setup on Linux systems.
 
-``` Bash
+``` 
 Usage: imagesorter.py source-directory [options]
 
 Options:
