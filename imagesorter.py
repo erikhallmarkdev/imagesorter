@@ -14,26 +14,23 @@ parser.add_option("-s", "--square", dest="square_dir", help="Directory to add sq
 
 (options, args) = parser.parse_args()
 
-if(len(args) >= 1):
-  os.chdir(args[0])
-
-for f in os.listdir(args[0]):
+for f in os.listdir(os.path.abspath(args[0])):
   if(not filepattern.match(f)):
     continue
 
-  image = Image.open(f)
+  image = Image.open(os.path.abspath(args[0]) + "/" + f)
   width,height = image.size
 
   if(width > height): #landscape
     if(options.landscape_dir is not None):
-      shutil.copy(args[0] + "/" + f, options.landscape_dir)
+      shutil.copy(os.path.abspath(args[0]) + "/" + f, os.path.abspath(options.landscape_dir))
     
     
   if(width < height): #portrait
     if(options.portrait_dir is not None):
-      shutil.copy(args[0] + "/" + f, options.portrait_dir)
+      shutil.copy(os.path.abspath(args[0]) + "/" + f, os.path.abspath(options.portrait_dir))
 
   if(width == height): #square
     if(options.squre_dir is not None):
-      shutil.copy(args[0] + "/" + f, options.square)
+      shutil.copy(os.path.abspath(args[0]) + "/" + f, os.path.abspath(options.square))
       
