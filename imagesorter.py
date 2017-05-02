@@ -5,7 +5,7 @@ from optparse import OptionParser
 import os, re, shutil
 
 parser = OptionParser("Usage: %prog source-directory [options]")
-filepattern = re.compile("([^\s]+(\.(jpeg|jpg|png|gif|bmp))$)")
+filepattern = re.compile("([^\s]+(\.(jpeg|jpg|png|gif|bmp))$)", re.IGNORECASE)
 
 parser.add_option("-l", "--landscape", dest="landscape_dir", help="Directory to add landscape photos to")
 parser.add_option("-p", "--portrait", dest="portrait_dir", help="Directory to add portrait photos to")
@@ -32,4 +32,3 @@ for f in os.listdir(os.path.abspath(args[0])):
   if(width == height): #square
     if(options.squre_dir is not None):
       shutil.copy(os.path.abspath(args[0]) + "/" + f, os.path.abspath(options.square))
-      
