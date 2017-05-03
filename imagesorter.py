@@ -37,7 +37,7 @@ for f in files:
   image = Image.open(os.path.abspath(args[0]) + "/" + f)
   width,height = image.size
 
-  progress(i, len(files), f)
+  progress(i, len(files), '')
 
   i = i + 1
 
