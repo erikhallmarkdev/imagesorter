@@ -19,14 +19,14 @@ files = os.listdir(os.path.abspath(args[0]))
 
 #Credit for the progess bar goes to https://gist.github.com/vladignatyev/06860ec2040cb497f0f3
 
-def progress(count, total, status=''):
+def progress(count, total):
   bar_len = 60
   filled_len = int(round(bar_len * count / float(total)))
 
   percents = round(100.0 * count / float(total), 1)
   bar = '=' * filled_len + '-' * (bar_len - filled_len)
 
-  sys.stdout.write('[%s] %s%s ...%s\r' % (bar, percents, '%', status))
+  sys.stdout.write('[%s] %s%s\r' % (bar, percents, '%'))
   sys.stdout.flush() 
 
 
@@ -34,12 +34,10 @@ for f in files:
   if(not filepattern.match(f)):
     continue
 
+  i = i + 1
   image = Image.open(os.path.abspath(args[0]) + "/" + f)
   width,height = image.size
-
-  progress(i, len(files), '')
-
-  i = i + 1
+  progress(i, len(files))
 
   if(width > height): #landscape
     if(options.landscape_dir is not None):
