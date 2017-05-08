@@ -13,13 +13,11 @@ parser.add_option("-s", "--square", dest="square_dir", help="Directory to add sq
 
 (options, args) = parser.parse_args()
 
-i = 0
-
 files = os.listdir(os.path.abspath(args[0]))
 
 #Credit for the progess bar goes to https://gist.github.com/vladignatyev/06860ec2040cb497f0f3
 
-def progress(count, total):
+def progress(count, total): #TODO: Convert this to a better progressbar, like the one I have on github.
   bar_len = 60
   filled_len = int(round(bar_len * count / float(total)))
 
@@ -29,6 +27,7 @@ def progress(count, total):
   sys.stdout.write('[%s] %s%s\r' % (bar, percents, '%'))
   sys.stdout.flush() 
 
+i = 0
 
 for f in files:
   if(not filepattern.match(f)):
